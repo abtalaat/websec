@@ -76,7 +76,7 @@ return c.JSON(400, map[string]string{"error": "Invalid email format"})
 }
 
 // Restrict email to specific domains
-allowedDomains := []string{"example.com", "approveddomain.com"}
+allowedDomains := []string{"aucegypt.edu"}
 if !isAllowedDomain(email, allowedDomains) {
 return c.JSON(400, map[string]string{"error": "Email domain not allowed"})
 }
