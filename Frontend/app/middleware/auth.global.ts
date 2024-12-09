@@ -8,6 +8,7 @@ export default defineNuxtRouteMiddleware((to) => {
     && to?.name !== 'noaccount'
     && to?.name !== 'loginpagetocyberrange'
     && to?.name !== 'forgetpasswordman'
+    && to?.name !== 'verifyEmail'
   ) {
     abortNavigation()
     return navigateTo('/')
@@ -16,6 +17,7 @@ export default defineNuxtRouteMiddleware((to) => {
     && (to?.name === 'loginpagetocyberrange'
     || to?.name === 'noaccount'
     || to?.name === 'forgetpasswordman'
+    || to?.name === 'verifyEmail'
     )
   ) {
     abortNavigation()

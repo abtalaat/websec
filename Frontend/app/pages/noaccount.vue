@@ -100,29 +100,9 @@ const validate = (state: any) => {
 }
 
 function onSubmit (data: any) {
-  loading.value = true
-  fetch(`${apiURL}/api/v1/auth/register`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(res => res.json())
-    .then((res) => {
-      loading.value = false
-      if (res.error) {
-        return (errorMessage.value = res.error)
-      } else {
-        toast.add({
-          title: 'Account Registered Successfully 🎉',
-          description: 'You can now login to your account.',
-          color: 'green'
-        })
+  
+       navigateTo('/verifyEmail')
 
-        navigateTo('/loginpagetocyberrange')
-      }
-    })
     .catch((error) => {
       loading.value = false
       errorMessage.value = 'Network error, please try again later.'
