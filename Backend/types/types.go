@@ -78,3 +78,12 @@ type RequestUpdateAccount struct {
 	OldPassword string `json:"password_current"`
 	NewPassword string `json:"password_new"`
 }
+
+type VerifyOTPRequest struct {
+	ID              string `json:"id"`
+	Email           string `json:"email"`
+	OTP             string `json:"otp"`
+	Password        string `json:"password"`
+	ConfirmPassword string `json:"confirm_password"`
+	Name            string `json:"name"`
+  }

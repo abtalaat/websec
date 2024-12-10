@@ -37,7 +37,7 @@ func StartServer() error {
 	authGroup := api.Group("/auth")
 	authGroup.POST("/login", auth.Login)
 	authGroup.POST("/register", auth.Register)
-	authGroup.POST("/register-admin", auth.RegisterAdmin)
+	//authGroup.POST("/register-admin", auth.RegisterAdmin)
 	authGroup.POST("/forget-password", auth.ForgetP)
 	authGroup.POST("/change-password", auth.ChangePass)
 

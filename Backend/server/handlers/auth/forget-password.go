@@ -31,20 +31,18 @@ const (
 	maxRequests       = 5                
 )
 
-func generateOTP() (string, error) {
+func generateForgotOTP() (string, error) {
 	otpLength := 8
 	otp := make([]byte, otpLength)
 	_, err := rand.Read(otp)
 	if err != nil {
 		return "", err
 	}
-
 	otpString := base64.URLEncoding.EncodeToString(otp)
-
 	return otpString, nil
 }
 
-func sendOTPEmail(email, otp string) error {
+func sendForgotOTPEmail(email, otp string) error {
 	fmt.Printf("Sending OTP: %s to email: %s\n", otp, email)
 	return nil
 }
@@ -78,7 +76,7 @@ func ForgetP(c echo.Context) error {
 		return c.JSON(200, map[string]string{"message": "If this email exists, an OTP will be sent shortly."})
 	}
 
-	otp, err := generateOTP()
+	otp, err := generateForgotOTP()
 	if err != nil {
 		return c.JSON(500, map[string]string{"error": "Failed to generate OTP"})
 	}
@@ -89,7 +87,7 @@ func ForgetP(c echo.Context) error {
 		ExpiryTime: time.Now().Add(otpExpiryDuration),
 	}
 
-	err = sendOTPEmail(forgetPassword.Email, otp)
+	err = sendForgotOTPEmail(forgetPassword.Email, otp)
 	if err != nil {
 		return c.JSON(500, map[string]string{"error": "Failed to send OTP email"})
 	}

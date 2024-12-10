@@ -127,3 +127,5 @@ return c.JSON(200, map[string]string{"message": "Account is updated successfully
 func sanitizeInput(input string) string {
 return html.EscapeString(strings.TrimSpace(input))
 }
+
+
